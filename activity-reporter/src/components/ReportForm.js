@@ -77,7 +77,7 @@ const ReportForm = () => {
 
   const getUserIdByUsername = async (username) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/obtenerUsuarioPorNombre?username=${username}`);
+      const response = await axios.get(`http://44.200.5.130:80/api/obtenerUsuarioPorNombre?username=${username}`);
       return response.data.id; // Suponiendo que la respuesta contiene el ID del usuario
     } catch (error) {
       throw new Error(`Error al obtener el ID del usuario: ${error.message}`);
@@ -112,7 +112,7 @@ const ReportForm = () => {
 
       // Realizar la inserción en la base de datos
       const response = await axios.post(
-        'http://localhost:5000/api/guardarRegistro',
+        'http://44.200.5.130:80/api/guardarRegistro',
         { ...newActivity, usuario_id: usuarioId }, // Añadir usuario_id obtenido
         {
           headers: {
@@ -155,7 +155,7 @@ const ReportForm = () => {
   const handleConfirm = async (usuarioId) => {
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/guardarRegistro',
+        'http://44.200.5.130:80/api/guardarRegistro',
         { ...newActivity, usuario_id: usuarioId }, // Incluir usuario_id en la solicitud
         {
           headers: {
@@ -203,7 +203,7 @@ const ReportForm = () => {
   const fetchActivitiesByUser = async usuario_id => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/buscarPorUsuario?usuario_id=${usuario_id}`
+        `http://44.200.5.130:80/api/buscarPorUsuario?usuario_id=${usuario_id}`
       );
       const result = response.data;
       setFilteredActivities(result);
@@ -219,7 +219,7 @@ const ReportForm = () => {
   const fetchActivitiesByActivity = async nombre_actividad => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/buscarPorActividad?nombre_actividad=${nombre_actividad}`
+        `http://44.200.5.130:80/api/buscarPorActividad?nombre_actividad=${nombre_actividad}`
       );
       const result = response.data;
       setFilteredActivities(result); // Asegúrate de que result contenga los datos esperados
